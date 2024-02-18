@@ -63,6 +63,13 @@ public class Jugador {
         this.dineroJugador = dineroJugador;
     }
 
+    public Jugador(String nombreJugador, String iconoJugador, double dineroJugador, Usuario usuario) {
+        this.nombreJugador = nombreJugador;
+        this.iconoJugador = iconoJugador;
+        this.dineroJugador = dineroJugador;
+        this.usuario = usuario;
+    }
+
     public Jugador(String nombreJugador, String iconoJugador, double dineroJugador, Partida partida, Usuario usuario) {
         this.nombreJugador = nombreJugador;
         this.iconoJugador = iconoJugador;

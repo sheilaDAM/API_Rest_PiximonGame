@@ -1,6 +1,7 @@
 package com.piximongameAPI.Controlador;
 
 import com.piximongameAPI.Entidades.Jugador;
+import com.piximongameAPI.Entidades.ResponseStatus;
 import com.piximongameAPI.Repositorios.RepositorioJugador;
 import com.piximongameAPI.Servicios.Implementacion.ServicioAlineacionImpl;
 import com.piximongameAPI.Servicios.Implementacion.ServicioCartaImpl;
@@ -28,6 +29,7 @@ public class ControladorJugador {
 
     @Autowired
     private ServicioAlineacionImpl servicioAlineacion;
+
     @GetMapping("/getJugadores")
     public List<Jugador> listarJugadores() {
         try {
@@ -44,9 +46,23 @@ public class ControladorJugador {
         }
     }
 
+    @GetMapping("/obtenerJugadoresPorPartidaId/{id}")
+    public List<Jugador> obtenerJugadoresPorPartidaId(@PathVariable int id) {
+        try {
+            List<Jugador> jugadores = servicioJugador.findJugadoresByPartidaId(id);
+            for(Jugador jugador : jugadores){
+                System.out.println(jugador.getNombreJugador());
+            }
+            return servicioJugador.findJugadoresByPartidaId(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList(); // Devuelve una lista vacía en caso de error
+        }
+    }
+
 
     @PostMapping("/addJugadores")
-    public boolean addJugador(@RequestBody Jugador jugador) {
+    public ResponseStatus addJugador(@RequestBody Jugador jugador) {
         System.out.println(jugador.toString());
         try {
             Jugador jugadorInsertado = jugador;
@@ -57,10 +73,10 @@ public class ControladorJugador {
             //servicioCarta.alinearCartas();
 
 
-            return true;
+            return new ResponseStatus(ResponseStatus.TipoCodigo.INSERT_OK);
         } catch (Exception e) {
             System.out.println("addJugador ERROR:" + e.getMessage());
-            return false;
+            return new ResponseStatus(ResponseStatus.TipoCodigo.ERROR);
         }
     }
 }

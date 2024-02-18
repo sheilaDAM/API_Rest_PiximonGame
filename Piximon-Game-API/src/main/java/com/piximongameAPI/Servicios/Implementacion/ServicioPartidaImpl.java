@@ -27,6 +27,11 @@ public class ServicioPartidaImpl implements ServicioPartida {
     }
 
     @Override
+    public int obtenerPartidaActual(String nombre) {
+        return repositorioPartida.obtenerPartidaActual(nombre);
+    }
+
+    @Override
     public Partida crearPartida(Partida partida) {
         return repositorioPartida.findById(repositorioPartida.save(partida).getId());
     }
