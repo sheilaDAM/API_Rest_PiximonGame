@@ -8,8 +8,13 @@ import java.util.List;
 
 public interface RepositorioCarta extends JpaRepository<Carta, Integer> {
 
+    //Obtener un listado de las cartas que no tienen jugador asignado
     @Query(value = "SELECT * FROM cartas WHERE jugador IS NULL Limit :limit", nativeQuery = true)
     List<Carta> recuperar20CartasSinJugador(int limit);
+
+    //obtener las cartas de un jugador concreto
+    @Query(value = "SELECT * FROM cartas WHERE jugador = :id", nativeQuery = true)
+    List<Carta> obtenerCartasJugador(int id);
 
 
 }

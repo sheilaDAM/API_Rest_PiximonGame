@@ -34,6 +34,11 @@ public class ServicioCartaImpl implements ServicioCarta {
     }
 
     @Override
+    public List<Carta> obtenerCartasJugador(int id) {
+        return repositorioCarta.obtenerCartasJugador(id);
+    }
+
+    @Override
     public Carta obtenerPorId(int id) {
         return repositorioCarta.findById(id).orElse(null);
     }

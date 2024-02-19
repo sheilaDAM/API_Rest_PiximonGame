@@ -4,10 +4,7 @@ import com.piximongameAPI.Entidades.Carta;
 import com.piximongameAPI.Repositorios.RepositorioCarta;
 import com.piximongameAPI.Servicios.ServicioCarta;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,9 @@ public class ControladorCarta {
         return cartas;
     }
 
-
+    @GetMapping("/obtenerCartasJugador/{id}")
+    public List<Carta> obtenerCartasJugador(@PathVariable int id) {
+    List<Carta> cartas = servicioCarta.obtenerCartasJugador(id);
+    return cartas;
+    }
 }

@@ -10,6 +10,8 @@ public interface ServicioCarta {
 
     List<Carta> obtenerCartas();
 
+    List<Carta> obtenerCartasJugador(int id);
+
     Carta obtenerPorId(int id);
 
     List<Carta> crearCartas(Partida partida);
