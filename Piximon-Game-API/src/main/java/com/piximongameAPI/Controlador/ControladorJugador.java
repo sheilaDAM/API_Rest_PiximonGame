@@ -46,6 +46,18 @@ public class ControladorJugador {
         }
     }
 
+    @GetMapping("/obtenerJugadorUsuarioEnPartida/{id}")
+    public Jugador obtenerUsuarioJugador(@PathVariable int idPartida) {
+        try {
+            Jugador jugador = servicioJugador.obtenerJugadorUsuarioEnPartida(idPartida);
+            System.out.println(jugador.getNombreJugador());
+            return jugador;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null; // Devuelve una lista vacía en caso de error
+        }
+    }
+
     @GetMapping("/obtenerJugadoresPorPartidaId/{id}")
     public List<Jugador> obtenerJugadoresPorPartidaId(@PathVariable int id) {
         try {

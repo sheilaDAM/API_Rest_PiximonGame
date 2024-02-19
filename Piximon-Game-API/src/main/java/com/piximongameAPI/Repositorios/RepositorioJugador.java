@@ -30,4 +30,9 @@ public interface RepositorioJugador extends JpaRepository<Jugador, Integer> {
     @Query("SELECT * FROM jugadores WHERE usuario IS NULL AND partida_id = :id")
     List<Jugador> obtenerJugadoresAleatoriosEnPartida(int id);
 
+    //Obtener jugador usuario (el jugador que no es bot)
+    @Query("SELECT * FROM jugadores WHERE usuario IS NOT NULL AND partida_id = :id")
+    Jugador obtenerJugadorUsuarioEnPartida(int id);
+
+
 }

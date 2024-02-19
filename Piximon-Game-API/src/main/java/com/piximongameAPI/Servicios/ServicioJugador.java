@@ -18,6 +18,7 @@ public interface ServicioJugador {
 
     Jugador comprobarSiExisteJugador(String nombre);
     List<Jugador> obtenerJugadoresAleatoriosEnPartida(int id);
+    Jugador obtenerJugadorUsuarioEnPartida(int id);
 
 
 }
