@@ -5,6 +5,7 @@ import com.piximongameAPI.Servicios.ServicioPartida;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,7 +16,7 @@ public class ControladorPartida {
     private ServicioPartida servicioPartida;
 
     @GetMapping("/obtenerPartidaActual")
-    int obtenerPartidaActual(String nombre) {
+    int obtenerPartidaActual(@RequestParam("nombre") String nombre) {
         return servicioPartida.obtenerPartidaActual(nombre);
     }
 }

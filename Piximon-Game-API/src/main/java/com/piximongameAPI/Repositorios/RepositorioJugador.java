@@ -26,4 +26,8 @@ public interface RepositorioJugador extends JpaRepository<Jugador, Integer> {
     @Query(value = "SELECT * FROM jugadores", nativeQuery = true)
     List<Jugador> obtenerTodosLosJugadores();
 
+    //Obtener los jugadores aleatorios de una partida concreta
+    @Query("SELECT * FROM jugadores WHERE usuario IS NULL AND partida_id = :id")
+    List<Jugador> obtenerJugadoresAleatoriosEnPartida(int id);
+
 }

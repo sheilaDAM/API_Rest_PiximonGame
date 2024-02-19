@@ -60,6 +60,20 @@ public class ControladorJugador {
         }
     }
 
+    @GetMapping("/obtenerJugadoresAleatoriosEnPartida/{id}")
+    public List<Jugador> obtenerJugadoresAleatoriosEnPartida(@PathVariable int id) {
+        try {
+            List<Jugador> jugadores = servicioJugador.obtenerJugadoresAleatoriosEnPartida(id);
+            for(Jugador jugador : jugadores){
+                System.out.println(jugador.getNombreJugador());
+            }
+            return servicioJugador.obtenerJugadoresAleatoriosEnPartida(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
 
     @PostMapping("/addJugadores")
     public ResponseStatus addJugador(@RequestBody Jugador jugador) {

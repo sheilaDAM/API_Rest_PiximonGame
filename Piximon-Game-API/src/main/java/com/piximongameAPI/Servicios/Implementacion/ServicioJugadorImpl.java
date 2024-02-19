@@ -130,6 +130,11 @@ public class ServicioJugadorImpl implements ServicioJugador {
         return repositorioJugador.comprobarSiExisteJugador(nombre);
     }
 
+    @Override
+    public List<Jugador> obtenerJugadoresAleatoriosEnPartida(int id) {
+        return repositorioJugador.obtenerJugadoresAleatoriosEnPartida(id);
+    }
+
 
     public List<String> rutaimagenAvatar() {
         List<String> avatares = new ArrayList<>();
