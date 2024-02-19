@@ -13,7 +13,7 @@ public interface RepositorioJugador extends JpaRepository<Jugador, Integer> {
     //Si quisiéramos tener alguna búsqueda o acción personalizada que queramos
     //realizar con la base de datos, la podríamos hacer aquí con nuestro propio código y métodos
 
-    @Query(value = "SELECT * FROM jugadores WHERE partida_id = :id", nativeQuery = true)
+    @Query(value = "SELECT * FROM jugadores WHERE partida_id =:id", nativeQuery = true)
     List<Jugador> findJugadoresByPartidaId(int id);
 
     //SABIENDO EL fk_usuario buscar qué jugador es en la tabla jugadores
@@ -27,11 +27,11 @@ public interface RepositorioJugador extends JpaRepository<Jugador, Integer> {
     List<Jugador> obtenerTodosLosJugadores();
 
     //Obtener los jugadores aleatorios de una partida concreta
-    @Query("SELECT * FROM jugadores WHERE usuario IS NULL AND partida_id = :id")
+    @Query(value = "SELECT * FROM jugadores WHERE usuario IS NULL AND partida_id = :id", nativeQuery = true)
     List<Jugador> obtenerJugadoresAleatoriosEnPartida(int id);
 
     //Obtener jugador usuario (el jugador que no es bot)
-    @Query("SELECT * FROM jugadores WHERE usuario IS NOT NULL AND partida_id = :id")
+    @Query(value ="SELECT * FROM jugadores WHERE usuario IS NOT NULL AND partida_id = :id", nativeQuery = true)
     Jugador obtenerJugadorUsuarioEnPartida(int id);
 
 
