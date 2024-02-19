@@ -27,7 +27,6 @@ public class ServicioCartaImpl implements ServicioCarta {
     @Autowired
     private RepositorioAlineacion repositorioAlineacion;
 
-
     @Override
     public List<Carta> obtenerCartas() {
         return repositorioCarta.findAll();
@@ -86,6 +85,11 @@ public class ServicioCartaImpl implements ServicioCarta {
         }
 
      return cartas;
+    }
+
+    @Override
+    public List<Carta> obtenerCartasSinAsignar() {
+        return repositorioCarta.obtenerCartasSinAsignar();
     }
 
     public void alinearCartas() {

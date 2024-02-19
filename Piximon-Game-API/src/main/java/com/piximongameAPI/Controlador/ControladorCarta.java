@@ -12,21 +12,26 @@ import java.util.List;
 @RequestMapping("/cartas")
 public class ControladorCarta {
 
-    /*@Autowired
-    private RepositorioCarta repositorioCarta;*/
-
     @Autowired
     private ServicioCarta servicioCarta;
 
+    //Método para obtener todas las cartas de la bbdd
     @GetMapping("/getCartas")
     public List<Carta> listarCartas() {
         List<Carta> cartas = servicioCarta.obtenerCartas();
         return cartas;
     }
 
+    //Método para obtener las cartas de un jugador concreto
     @GetMapping("/obtenerCartasJugador/{id}")
     public List<Carta> obtenerCartasJugador(@PathVariable int id) {
     List<Carta> cartas = servicioCarta.obtenerCartasJugador(id);
     return cartas;
+    }
+
+    //Método para obtener las cartaas no asignadas a ningún jugador (para el mercado)
+    @GetMapping("/obtenerCartasSinAsignar")
+    List<Carta> obtenerCartasSinAsignar() {
+        return servicioCarta.obtenerCartasSinAsignar();
     }
 }

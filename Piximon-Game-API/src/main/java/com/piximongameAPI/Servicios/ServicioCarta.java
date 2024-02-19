@@ -16,5 +16,7 @@ public interface ServicioCarta {
 
     List<Carta> crearCartas(Partida partida);
 
+    List<Carta> obtenerCartasSinAsignar();
+
 
 }

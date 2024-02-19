@@ -16,5 +16,8 @@ public interface RepositorioCarta extends JpaRepository<Carta, Integer> {
     @Query(value = "SELECT * FROM cartas WHERE jugador = :id", nativeQuery = true)
     List<Carta> obtenerCartasJugador(int id);
 
+    //obtener las cartas no asignadas a ningún jugador
+    @Query(value = "SELECT * FROM cartas WHERE jugador IS NULL", nativeQuery = true)
+    List<Carta> obtenerCartasSinAsignar();
 
 }
