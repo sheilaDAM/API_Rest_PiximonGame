@@ -29,6 +29,11 @@ public class ServicioAlineacionImpl implements ServicioAlineacion {
         return repositorioAlineacion.save(alineacion);
     }
 
+    @Override
+    public int comprobarSiHayAlineaciones() {
+        return repositorioAlineacion.comprobarSiHayAlineaciones();
+    }
+
     public void generarAlineaciones(){
         for(int i = 1; i<4; i++){
             repositorioAlineacion.save(new Alineacion("Zona " + i));

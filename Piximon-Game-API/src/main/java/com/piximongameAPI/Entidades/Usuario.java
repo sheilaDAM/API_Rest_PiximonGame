@@ -30,6 +30,10 @@ public class Usuario {
     @JsonManagedReference("usuario-combate")
     private List<Combate> combates = new ArrayList<>();
 
+    @OneToMany(mappedBy = "usuario")
+    @JsonManagedReference("jugador-usuario")
+    private List<Jugador> jugador;
+
 
     public Usuario(String nombre, String password) {
         this.nombre = nombre;

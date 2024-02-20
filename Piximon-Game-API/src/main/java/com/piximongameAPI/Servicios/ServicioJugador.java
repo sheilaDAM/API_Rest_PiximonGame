@@ -20,5 +20,7 @@ public interface ServicioJugador {
     List<Jugador> obtenerJugadoresAleatoriosEnPartida(int id);
     Jugador obtenerJugadorUsuarioEnPartida(int id);
 
+    Jugador obtenerJugadorPorNombre(String nombre);
+
 
 }

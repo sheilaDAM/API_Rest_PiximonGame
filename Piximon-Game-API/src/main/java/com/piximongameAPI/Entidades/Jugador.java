@@ -41,8 +41,9 @@ public class Jugador {
     private Combate combate;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario", referencedColumnName = "id") //hace referencia al id de la tabla usuario
+    @JsonBackReference("jugador-usuario")
     private Usuario usuario;
 
 

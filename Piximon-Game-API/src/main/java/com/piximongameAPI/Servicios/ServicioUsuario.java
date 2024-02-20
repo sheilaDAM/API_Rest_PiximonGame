@@ -20,4 +20,6 @@ public interface ServicioUsuario {
     Usuario comprobarSiExisteUsuario(String nombre);
 
     int obtenerIdUsuarioPorNombre(String nombre);
+
+    Usuario obtenerUsuarioEnPartidaActual(int id);
 }

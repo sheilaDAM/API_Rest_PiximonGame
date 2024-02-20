@@ -12,7 +12,7 @@ public interface ServicioPartida {
 
     Partida obtenerPartidaPorId(int id);
 
-    int obtenerPartidaActual(String nombre);
+    Partida obtenerPartidaActual(String nombre);
 
     Partida crearPartida(Partida partida);
 

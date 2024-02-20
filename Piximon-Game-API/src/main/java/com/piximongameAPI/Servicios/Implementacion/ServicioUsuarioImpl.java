@@ -44,5 +44,10 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
         return repositorioUsuario.obtenerIdUsuarioPorNombre(nombre);
     }
 
+    @Override
+    public Usuario obtenerUsuarioEnPartidaActual(int id) {
+        return repositorioUsuario.obtenerUsuarioEnPartidaActual(id);
+    }
+
 
 }

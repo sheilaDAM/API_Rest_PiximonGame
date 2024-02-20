@@ -34,5 +34,9 @@ public interface RepositorioJugador extends JpaRepository<Jugador, Integer> {
     @Query(value ="SELECT * FROM jugadores WHERE usuario IS NOT NULL AND partida_id = :id", nativeQuery = true)
     Jugador obtenerJugadorUsuarioEnPartida(int id);
 
+    //obtener el jugador por el nombre
+    @Query(value = "SELECT * FROM jugadores WHERE nombre_jugador =:nombre", nativeQuery = true)
+    Jugador obtenerJugadorPorNombre(String nombre);
+
 
 }

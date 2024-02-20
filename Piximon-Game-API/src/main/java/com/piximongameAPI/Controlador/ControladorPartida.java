@@ -1,5 +1,6 @@
 package com.piximongameAPI.Controlador;
 
+import com.piximongameAPI.Entidades.Partida;
 import com.piximongameAPI.Servicios.ServicioJugador;
 import com.piximongameAPI.Servicios.ServicioPartida;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class ControladorPartida {
     private ServicioPartida servicioPartida;
 
     @GetMapping("/obtenerPartidaActual/{nombre}")
-    int obtenerPartidaActual(@PathVariable String nombre) {
+    Partida obtenerPartidaActual(@PathVariable String nombre) {
         return servicioPartida.obtenerPartidaActual(nombre);
     }
 }

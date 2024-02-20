@@ -22,6 +22,8 @@ public interface RepositorioUsuario extends JpaRepository<Usuario, Integer> {
     @Query (value = "SELECT * FROM usuarios WHERE nombre =:nombre", nativeQuery = true)
     Usuario obtenerUsuarioPorNombre(String nombre);
 
+    @Query (value = "SELECT * FROM jugadores j WHERE j.partida_id =:id AND j.usuario IS NOT NULL", nativeQuery = true)
+    Usuario obtenerUsuarioEnPartidaActual(int id);
 
 
 }

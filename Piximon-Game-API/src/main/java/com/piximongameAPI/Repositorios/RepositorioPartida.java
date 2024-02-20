@@ -15,8 +15,8 @@ public interface RepositorioPartida extends JpaRepository<Partida, Integer> {
     Partida findById(int id);
 
     //Obtener partida en la que juega nuestro usuario jugador actual
-    @Query(value = "SELECT partida_id FROM jugadores WHERE nombre_jugador = :nombre", nativeQuery = true)
-    int obtenerPartidaActual(String nombre);
+    @Query(value = "SELECT p.* FROM jugadores j INNER JOIN partidas p ON p.id = j.partida_id WHERE nombre_jugador = :nombre", nativeQuery = true)
+    Partida obtenerPartidaActual(String nombre);
 
 
 

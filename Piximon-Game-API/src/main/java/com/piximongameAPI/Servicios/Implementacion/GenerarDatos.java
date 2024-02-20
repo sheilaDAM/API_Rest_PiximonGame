@@ -6,6 +6,7 @@ import com.piximongameAPI.api.IAPIServiceDigimon;
 import com.piximongameAPI.api.RestClientDigimon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import retrofit2.Callback;
 
 import java.util.*;
@@ -39,21 +40,19 @@ public class GenerarDatos {
         }
     }
 
+    @Transactional
     public List<Jugador> crearJugadores(Jugador jugador) {
-        Partida partidaActual = new Partida();
-        partidaActual = repositorioPartida.save(partidaActual);
-        //Combate combate = new Combate();
-        //Combate partidaActual = repositorioPartida.save(partida);
-        Usuario jugadorUsuario = repositorioUsuario.obtenerUsuarioPorNombre(jugador.getNombreJugador());
-
-        // partidaActual.setUsuario(jugadorUsuario);
 
         //creamos la partida e insertamos este id a los jugadores que creemos
-
+        Partida partidaActual = new Partida();
+        partidaActual = repositorioPartida.save(partidaActual);
+        //obtenemos el usuario que está registrado
+        //Usuario jugadorUsuario = repositorioUsuario.obtenerUsuarioPorNombre(jugador.getNombreJugador());
+        Usuario usuarioEnPartida = repositorioUsuario.obtenerUsuarioEnPartidaActual(partidaActual.getId());
         // Primero guardamos el jugador principal (usuario que juega), y el fk_usuario estará rellenado con el id del usuario, el resto de jugadores será null
         List<Jugador> jugadores = new ArrayList<>();
         jugador.setPartida(partidaActual);
-        jugador.setUsuario(jugadorUsuario);
+        jugador.setUsuario(usuarioEnPartida);
         jugadores.add(jugador);
         Random random = new Random();
         //Creamos dos colecciones para guardar las fotos (avatares) y nombres aleatorios disponibles para los jugadores aleatorios

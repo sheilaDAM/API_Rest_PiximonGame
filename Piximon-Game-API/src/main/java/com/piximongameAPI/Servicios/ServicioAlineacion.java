@@ -13,6 +13,8 @@ public interface ServicioAlineacion {
 
     Alineacion crearAlineacion(Alineacion alineacion);
 
+    int comprobarSiHayAlineaciones();
+
 
 
 

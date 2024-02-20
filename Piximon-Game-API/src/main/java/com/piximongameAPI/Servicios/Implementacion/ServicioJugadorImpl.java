@@ -140,6 +140,11 @@ public class ServicioJugadorImpl implements ServicioJugador {
         return repositorioJugador.obtenerJugadorUsuarioEnPartida(id);
     }
 
+    @Override
+    public Jugador obtenerJugadorPorNombre(String nombre) {
+        return repositorioJugador.obtenerJugadorPorNombre(nombre);
+    }
+
 
     public List<String> rutaimagenAvatar() {
         List<String> avatares = new ArrayList<>();
